@@ -170,9 +170,6 @@ gaps outer 1
 # Remove Mouse Warping
 mouse_warping none
 
-# Use CTRL+ALT+T for terminal
-bindsym Control+Mod1+t exec --no-startup-id konsole
-
 focus_on_window_activation none
 
 # Enable focus on mouse hover
