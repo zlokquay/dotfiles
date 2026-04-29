@@ -3,6 +3,9 @@ HEAVILY BASED ON THE DOTS HERE: https://github.com/freak532486/nord-rice-dotfile
 Simple i3/polybar nord theme. Does what I need it to, and very little of anything else.
 This will 100% need to be decently edited to remove a lot of the "me" specific flavorings.
 
+![desktop.png](images/desktop.png)
+
+![stuff_opened.png](images/stuff_opened.png)
 -----
 
 # Dependencies
