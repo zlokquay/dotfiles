@@ -16,27 +16,34 @@ Not in this repository are:
 - Icon-Theme (Papirus)
 - Firefox Theme (Nord)
 
+Fonts:
+- Inconsolata LGC Nerd Font Mono
+- FontAwesome
+- RobotoMono Nerd
+- Iosevka Nerd Font
+- icomoon-feather
+
 ![desktop.png](images/desktop.png)
 
 ![stuff_opened.png](images/stuff_opened.png)
 -----
 
-# Dependencies
-## i3
-* xss-lock
-* i3lock (currently unused)
-* feh
-* ghostty (or edit to swap to your terminal emulator of choice)
-* thunar (or edit to swap to your file browser of choice)
-* rofi
-* dunst
-* picom
-* polybar
-* maim
-* xclip
-* gpu-screen-recorder
-* gpu-screen-recorder-ui
+## Dependencies
+i3
+- xss-lock
+- i3lock (currently unused)
+- feh
+- ghostty (or edit to swap to your terminal emulator of choice)
+- thunar (or edit to swap to your file browser of choice)
+- rofi
+- dunst
+- picom
+- polybar
+- maim
+- xclip
+- gpu-screen-recorder
+- gpu-screen-recorder-ui
 
-## polybar
-* You will need to edit /polybar/scripts/weather-plugin.sh line 107 to change to your city.
-* You will need to provide your own openweathermap api key (they're free!) and put into a file at /home/user/.owm-key
+polybar
+- You will need to edit /polybar/scripts/weather-plugin.sh line 107 to change to your city.
+- You will need to provide your own openweathermap api key (they're free!) and put into a file at /home/user/.owm-key
