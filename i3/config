@@ -34,7 +34,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --output DisplayPort-0 --off --output DisplayPort-1 --primary --mode 2560x1440 --pos 0x1080 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 260x0 --rotate normal --output HDMI-A-1 --off
 
 # Automatically set the desktop background to the provided path.
-exec --no-startup-id feh --bg-scale ~/Downloads/dotfiles/wallpapers/nord/20.png
+exec --no-startup-id feh --bg-scale ~/.config/wallpapers/nord/20.png
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
