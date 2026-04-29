@@ -15,7 +15,6 @@ Not in this repository are:
 - GTK-Theme (Look for the *Nordic* theme)
 - Icon-Theme (Papirus)
 - Firefox Theme (Nord)
-- Ghostty Theme (Built-in Nord `ghostty +list-themes`)
 
 ![desktop.png](images/desktop.png)
 
@@ -25,7 +24,7 @@ Not in this repository are:
 # Dependencies
 ## i3
 * xss-lock
-* i3lock
+* i3lock (currently unused)
 * feh
 * ghostty (or edit to swap to your terminal emulator of choice)
 * thunar (or edit to swap to your file browser of choice)
