@@ -13,7 +13,7 @@
   "display": {
     "key": {
       "separator": " ",
-      "width": 6,
+      "width": 8,
       "type": "string",
     },
   },
@@ -43,8 +43,14 @@
     },
     {
       "type": "shell",
-      "key": " └  ",
+      "key": " ├  ",
       "keyColor": "34",
+    },
+    {
+      "type": "command",
+      "key": " └ Age ",
+      "keyColor": "34",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
     },
     "break",
     {
@@ -111,11 +117,6 @@
       "key": " └  ",
       "keyColor": "35",
     },
-    //{
-    //  "type": "monitor",
-    //  "key": " └  ",
-    //  "keyColor": "35",
-    //},
     "break",
   ],
 }
