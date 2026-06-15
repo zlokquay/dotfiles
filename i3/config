@@ -13,7 +13,9 @@ focus_follows_mouse yes
 mouse_warping none
 
 # Automatically adjust the monitors
-exec --no-startup-id xrandr --output DisplayPort-0 --off --output DisplayPort-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI-A-0 --off --output HDMI-A-1 --off
+exec --no-startup-id xrandr --output DisplayPort-0 --off --output DisplayPort-1 --primary --mode 2560x1440 --rate 165 --pos 0x0 --rotate normal --output HDMI-A-0 --off --output HDMI-A-1 --off
+
+exec --no-startup-id picom &
 
 # Set the desktop background to the provided path.
 exec --no-startup-id feh --bg-scale ~/.config/wallpapers/nord/20.png
@@ -72,9 +74,6 @@ exec --no-startup-id firefox
 
 # Start Vesktop
 exec --no-startup-id vesktop
-
-# Start Picom
-exec --no-startup-id picom &
 
 # Start GPU Screen Recorder Shadowplay-like GUI
 exec --no-startup-id gsr-ui
@@ -159,9 +158,6 @@ bindsym $mod+e exec --no-startup-id thunar
 # Open rofi
 bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 
-bindsym $mod+p exec picom &
-bindsym $mod+Shift+p exec pkill picom
-
 # Screenshot on Win+Shift+s
 bindsym $mod+Shift+s exec --no-startup-id maim -s -u | xclip -selection clipboard -t image/png
 
@@ -188,5 +184,5 @@ for_window [class="Steam.*"] floating enable
 for_window [title="Battle.net"] floating enable resize set 1920 1080
 for_window [class="ghostty"] floating enable resize set 890 400
 for_window [class="bolt"] floating enable resize set 800 800
-for_window [class="net-runelite-client-RuneLite"] floating enable resize 1280 800
+for_window [class="net-runelite-client-RuneLite"] floating enable resize set 1280 800
 for_window [class="Firefox"] no_focus
