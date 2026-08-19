@@ -21,7 +21,9 @@ exec --no-startup-id picom &
 exec --no-startup-id feh --bg-scale ~/.config/wallpapers/nord/20.png
 
 # Set US/FI keyboard layout
-exec --no-startup-id setxkbmap -layout us,fi
+exec_always --no-startup-id setxkbmap -layout us,fi
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -181,8 +183,11 @@ for_window [class="^.*"] border pixel 1
 
 # Set floating for steam
 for_window [class="Steam.*"] floating enable
+for_window [class="vesktop"] floating enable
 for_window [title="Battle.net"] floating enable resize set 1920 1080
 for_window [class="ghostty"] floating enable resize set 890 400
 for_window [class="bolt"] floating enable resize set 800 800
 for_window [class="net-runelite-client-RuneLite"] floating enable resize set 1280 800
 for_window [class="Firefox"] no_focus
+for_window [title="KINGDOM HEARTS - HD 1.5+2.5 ReMIX -"] fullscreen enable
+for_window [class="steam_app_*"] fullscreen enable 

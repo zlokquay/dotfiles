@@ -8,5 +8,5 @@
  **/
 
 * {
-    font: "Inconsolata Nerd Font Mono Bold 12";
+    font: "RobotoMono Nerd Font 13";
 }

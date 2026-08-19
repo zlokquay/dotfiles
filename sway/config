@@ -1,0 +1,220 @@
+#######################
+#                     #
+#        INIT         #
+#                     #
+#######################
+
+set $gnome-schema org.gnome.desktop.interface
+
+set $mod Mod4
+font pango:monospace 8
+gaps inner 3
+gaps outer 1
+focus_on_window_activation none
+focus_follows_mouse yes
+mouse_warping none
+
+input "type:pointer" {
+  accel_profile flat
+  pointer_accel 0
+}
+
+input * {
+    xkb_layout "us,fi"
+}
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Nordic'
+    gsettings set $gnome-schema icon-theme 'Papirus'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-size 30
+    gsettings set $gnome-schema font-name 'Noto Sans'
+    gsettings set $gnome-schema color-scheme prefer-dark
+}
+
+seat seat0 xcursor_theme 'Adwaita' 30
+
+# Automatically adjust the monitors
+output DP-2 mode 2560x1440@165Hz pos 0 0
+output DP-2 bg ~/.config/wallpapers/nord/20.png fill
+output DP-1 disable
+output HDMI-A-2 disable
+#output HDMI-A-2 mode 2560x1440@60Hz pos 2560 0
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $monitor_primary "DP-2"
+set $monitor_secondary "HDMI-A-2"
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# set workspace to certain monitor
+workspace $ws1 output $monitor_primary
+workspace $ws2 output $monitor_primary
+workspace $ws3 output $monitor_primary
+workspace $ws4 output $monitor_primary
+workspace $ws5 output $monitor_primary
+workspace $ws6 output $monitor_primary
+workspace $ws7 output $monitor_primary
+workspace $ws8 output $monitor_primary
+workspace $ws9 output $monitor_primary
+workspace $ws10 output $monitor_secondary
+
+#################
+#               #
+#   Auto-start  #
+#               #
+#################
+
+# Start waybar
+exec --no-startup-id waybar
+
+# Start Autotiling
+exec_always --no-startup-id autotiling-rs
+
+# Start dunst
+exec --no-startup-id dunst
+
+# Start Firefox
+exec --no-startup-id firefox
+
+# Start Vesktop
+exec --no-startup-id vesktop
+
+# Start GPU Screen Recorder Shadowplay-like GUI
+exec --no-startup-id gsr-ui
+
+# Start Steam
+exec --no-startup-id steam
+
+# Start swayidle
+exec --no-startup-id ~/.config/scripts/idle.sh
+
+#################
+#               #
+#    Keybinds   #
+#               #
+#################
+
+### i3 Helpers
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 in-place (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# lock i3
+bindsym $mod+l exec swaylock
+
+bindsym $mod+Shift+l exec swaymsg exit
+
+### Window Management
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Toggle tiling / floating for the focused window
+bindsym $mod+Shift+space floating toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# kill focused window
+bindsym $mod+q kill
+
+# Move focused window to scratchpad
+bindsym $mod+Shift+Tab move scratchpad
+
+# Recall window from scratchpad
+bindsym $mod+Tab scratchpad show
+
+# Move focused window with the arrow keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+### Programs
+
+# Open a terminal
+bindsym $mod+Return exec ghostty 
+
+# Open file manager
+bindsym $mod+e exec --no-startup-id thunar
+
+# Open rofi
+bindcode $mod+40 exec /home/poggerscoom/.config/rofi/launchers/type-4/launcher.sh
+
+# Screenshot on Win+Shift+s
+bindsym $mod+Shift+s exec --no-startup-id grim -g "$(slurp)" - | wl-copy
+
+####################
+#                  #
+#   Window Rules   #
+#                  #
+####################
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #81a1c1 #285577 #ffffff #81a1c1   #81a1c1
+client.focused_inactive #4c566a #5f676a #ffffff #4c566a   #4c566a
+client.unfocused        #4c566a #222222 #888888 #4c566a   #4c566a
+client.urgent           #81a1c1 #900000 #ffffff #900000   #81a1c1
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #2e3440
+
+# Set window borders to plain borders
+for_window [class="^.*"] border pixel 1
+
+# Set floating for steam
+for_window [class="Steam.*"] floating enable
+for_window [app_id="vesktop"] floating enable
+for_window [title="Battle.net"] floating enable, resize set width 1920 px height 1080 px
+for_window [app_id="com.mitchellh.ghostty"] floating enable, resize set width 828 px height 415 px
+for_window [app_id="com.mitchellh.ghostty" title="micro"] floating disable 
+for_window [app_id="bolt-launcher"] floating enable, resize set width 800 px height 800 px
+for_window [app_id="galculator"] floating enable, resize set width 333 px height 450 px
+for_window [title="RuneLite Launcher"] floating enable
+for_window [class="net-runelite-client-RuneLite"] floating enable, resize set width 1280 px height 800 px
+for_window [class="Firefox"] no_focus
+for_window [title="KINGDOM HEARTS - HD 1.5+2.5 ReMIX -"] fullscreen enable
+for_window [class="steam_app_*"] fullscreen enable 
+
+exec "dbus-update-activation-environment --systemd --all "
+exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
