@@ -101,6 +101,8 @@ exec --no-startup-id steam
 # Start swayidle
 exec --no-startup-id ~/.config/scripts/idle.sh
 
+exec --no-startup-id "~/Documents/Minecraft Servers/FTB Skies/run.sh"
+
 #################
 #               #
 #    Keybinds   #
@@ -170,6 +172,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+#bindsym --no-repeat p seat - cursor press button1
+#bindsym --release p seat - cursor release button1
+
 ### Programs
 
 # Open a terminal
@@ -203,7 +208,7 @@ client.background       #2e3440
 for_window [class="^.*"] border pixel 1
 
 # Set floating for steam
-for_window [class="Steam.*"] floating enable
+for_window [app_id="Steam.*"] floating enable
 for_window [app_id="vesktop"] floating enable
 for_window [title="Battle.net"] floating enable, resize set width 1920 px height 1080 px
 for_window [app_id="com.mitchellh.ghostty"] floating enable, resize set width 828 px height 415 px
@@ -215,6 +220,12 @@ for_window [class="net-runelite-client-RuneLite"] floating enable, resize set wi
 for_window [class="Firefox"] no_focus
 for_window [title="KINGDOM HEARTS - HD 1.5+2.5 ReMIX -"] fullscreen enable
 for_window [class="steam_app_*"] fullscreen enable 
+for_window [title="The Elder Scrolls V: Skyrim Special Edition"] floating enable
+
+for_window {
+     # All Thunar windows except the main client are floating
+     [app_id="Thunar" title="^Rename.*$"] floating enable
+}
 
 exec "dbus-update-activation-environment --systemd --all "
 exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
