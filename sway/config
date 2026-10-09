@@ -77,6 +77,9 @@ workspace $ws10 output $monitor_secondary
 #               #
 #################
 
+# Start overlay EGL skipper
+exec --no-startup-id wlr-overlayd
+
 # Start waybar
 exec --no-startup-id waybar
 
@@ -101,7 +104,7 @@ exec --no-startup-id steam
 # Start swayidle
 exec --no-startup-id ~/.config/scripts/idle.sh
 
-exec --no-startup-id "~/Documents/Minecraft Servers/FTB Skies/run.sh"
+# exec --no-startup-id "~/Documents/Minecraft Servers/FTB Skies/run.sh"
 
 #################
 #               #
@@ -184,10 +187,13 @@ bindsym $mod+Return exec ghostty
 bindsym $mod+e exec --no-startup-id thunar
 
 # Open rofi
-bindcode $mod+40 exec /home/poggerscoom/.config/rofi/launchers/type-4/launcher.sh
+bindcode $mod+40 exec ~/.config/rofi/launchers/type-4/launcher.sh
 
 # Screenshot on Win+Shift+s
-bindsym $mod+Shift+s exec --no-startup-id grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+s exec --no-startup-id still -c 'grim -g "$(slurp)" - | wl-copy'
+
+# Media Play/Pause
+bindsym Pause exec playerctl play-pause
 
 ####################
 #                  #
