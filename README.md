@@ -5,11 +5,19 @@ This will 100% need to be decently edited to remove a lot of the "me" specific f
 
 ## Programs
 I use the following programs to achieve my desktop:
+### X11
 - i3 (Window Manager)
 - picom (Composition Manager, for shadows)
 - polybar (Status bar)
 - dunst (Notification manager)
 - Rofi (Launcher and Power menu)
+
+### Sway
+- Sway (Window Manager))
+- waybar (Status bar)
+- dunst (Notification manager)
+- Rofi (Launcher and Power menu)
+- wl-pick (Chooser)
 
 Not in this repository are:
 - GTK-Theme (Look for the *Nordic* theme)
@@ -44,6 +52,6 @@ i3
 - gpu-screen-recorder
 - gpu-screen-recorder-ui
 
-polybar
+polybar/waybar
 - You will need to edit /polybar/scripts/weather-plugin.sh line 107 to change to your city.
 - You will need to provide your own openweathermap api key (they're free!) and put into a file at /home/user/.owm-key
